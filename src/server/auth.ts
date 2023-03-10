@@ -50,6 +50,9 @@ export const authOptions: NextAuthOptions = {
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
       clientSecret: env.DISCORD_CLIENT_SECRET,
+      authorization: { params: { scope: "identify guilds" } },
+      // après ça, il faut supprimer le User & Account stocké en db pour reset les droits
+      // (prisma studio)
     }),
     /**
      * ...add more providers here.
